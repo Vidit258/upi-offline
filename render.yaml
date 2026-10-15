@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: upi-offline-mesh
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        fromDatabase:
+          name: upi-mesh-db
+          property: connectionString
+
+databases:
+  - name: upi-mesh-db
+    plan: free
