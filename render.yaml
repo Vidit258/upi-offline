@@ -7,10 +7,26 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: DATABASE_URL
+      - key: DB_HOST
         fromDatabase:
           name: upi-mesh-db
-          property: jdbcConnectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: upi-mesh-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: upi-mesh-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: upi-mesh-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: upi-mesh-db
+          property: password
 
 databases:
   - name: upi-mesh-db
